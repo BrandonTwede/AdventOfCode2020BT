@@ -16,14 +16,15 @@ def move_dir(x, y, dir, dist):
     if dir == "W": x -= dist
     return x, y
 
+def rotate(current_direction, rot_dir, distance):
+    turns = int(distance / 90)
+    if rot_dir == "L": turns *= -1
+    return (cur_dir + turns) % 4
+
 for instruction in instructions:
-    command = instruction[0]
-    distance = instruction[1]
+    command, distance = instruction
     if command in ["L", "R"]:
-        turns = int(distance / 90)
-        if command == "L": turns *= -1
-        cur_dir += turns
-        cur_dir = cur_dir % 4
+        cur_dir = rotate(cur_dir, command, distance)
     if command in dirs:
         x_pos, y_pos = move_dir(x_pos, y_pos, command, distance)
     if command == "F":
@@ -51,8 +52,7 @@ def rotate_waypoint(x, y, dir, dist):
     return x, y
 
 for instruction in instructions:
-    command = instruction[0]
-    distance = instruction[1]
+    command, distance = instruction
     if command in ["L", "R"]:
         waypt_x_pos, waypt_y_pos = rotate_waypoint(waypt_x_pos, waypt_y_pos, command, distance)
     if command in dirs:
