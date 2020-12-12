@@ -1,7 +1,7 @@
 import pdb;
 import re;
 
-f = open("day_4_input.txt", "r")
+f = open("day_04_input.txt", "r")
 current_passport_fields = []
 current_passport_values = []
 passports = []

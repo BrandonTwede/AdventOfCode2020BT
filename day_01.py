@@ -1,4 +1,4 @@
-f = open("day_1_input.txt", "r")
+f = open("day_01_input.txt", "r")
 numbers = []
 for line in f:
     numbers.append(int(line))

@@ -1,7 +1,7 @@
 import sys
 
-f = open("day_9_input.txt", "r")
-# f = open("day_9_test.txt", "r")
+f = open("day_09_input.txt", "r")
+# f = open("day_09_test.txt", "r")
 numbers = []
 for line in f:
     numbers.append(int(line))

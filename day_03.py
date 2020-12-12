@@ -1,5 +1,5 @@
-# f = open("day_3_input.txt", "r")
-f = open("day_3_input.txt", "r")
+# f = open("day_03_input.txt", "r")
+f = open("day_03_input.txt", "r")
 lines = []
 for line in f:
     lines.append(line.strip())

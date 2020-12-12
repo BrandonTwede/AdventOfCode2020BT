@@ -1,4 +1,4 @@
-f = open("day_2_input.txt", "r")
+f = open("day_02_input.txt", "r")
 passwords = []
 for line in f:
     passwords.append(line)
