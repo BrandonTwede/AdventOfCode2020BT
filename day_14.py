@@ -38,14 +38,14 @@ def decode_memory_address(mask, original_mem):
         if c == "0": continue
         masked_mem[i] = c
     
-    unchanged_pass = True
+    unchanged = False
     addresses = [masked_mem]
-    while True:
+    while not unchanged:
         next_addresses = []
-        unchanged_pass = True
+        unchanged = True
         for addr in addresses:
             if "X" in addr:
-                unchanged_pass = False
+                unchanged = False
                 idx = addr.index("X")
                 c = copy.deepcopy(addr)
                 c[idx] = "0"
@@ -56,9 +56,7 @@ def decode_memory_address(mask, original_mem):
             else:
                 next_addresses.append(addr)
         addresses = next_addresses
-        if unchanged_pass: break
     return list(map(''.join, addresses))
-
 
 memory = {}
 for s in sections:
