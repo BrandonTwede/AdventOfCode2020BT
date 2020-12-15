@@ -24,14 +24,15 @@ print("Part 1 Solution: " + str(soonest_bus * (soonest_bus - (my_time % soonest_
 def find_solution(start, lcm, constraints):
     multiple = 1
     solution = start
-    while True:
+    constraints_satisfied = False
+    while not constraints_satisfied:
         solution = start + (lcm * multiple)
         constraints_satisfied = True
         for c in constraints:
             offset = bus_times.index(str(c))
-            if (solution + offset) % c != 0: constraints_satisfied = False
-        if constraints_satisfied:
-            break
+            if (solution + offset) % c != 0:
+                constraints_satisfied = False
+                break
         multiple += 1
     return solution
 
