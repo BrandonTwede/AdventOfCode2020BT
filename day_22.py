@@ -1,6 +1,4 @@
 import copy
-import math
-import re
 
 f = open("day_22_input.txt", "r")
 full_text = f.read()
@@ -48,12 +46,19 @@ def can_do_recurisve_round(played, decks):
         if len(decks[i]) < card: return False
     return True
 
+def get_sub_decks(played, decks):
+    next_decks = []
+    for i, deck in enumerate(decks):
+        card = played[i]
+        next_decks.append(deck[:card])
+    return next_decks
+
 def do_recursive_round(decks, previous_rounds = []):
     played = []
     for deck in decks:
         played.append(deck.pop(0))
     if can_do_recurisve_round(played, decks):
-        winning_player_idx, _ = play_recursive_game([decks[0][:played[0]], decks[1][:played[1]]])
+        winning_player_idx, _ = play_recursive_game(get_sub_decks(played, decks))
     else:
         winning_player_idx = played.index(max(played))
     decks[winning_player_idx].append(played.pop(winning_player_idx))
