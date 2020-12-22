@@ -1,4 +1,4 @@
-f = open("day_15_input.txt", "r")
+f = open("2020/day_15_input.txt", "r")
 nums = []
 memory = dict()
 for line in f:

@@ -1,6 +1,6 @@
 import string
 
-f = open("day_06_input.txt", "r")
+f = open("2020/day_06_input.txt", "r")
 
 current_group = []
 groups = []

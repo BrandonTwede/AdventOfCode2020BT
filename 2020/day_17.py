@@ -1,6 +1,6 @@
 import copy
 
-f = open("day_17_input.txt", "r")
+f = open("2020/day_17_input.txt", "r")
 
 filled_spaces = dict()
 active = "#"

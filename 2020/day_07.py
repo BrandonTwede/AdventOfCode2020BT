@@ -1,6 +1,6 @@
 import re
 
-f = open("day_07_input.txt", "r")
+f = open("2020/day_07_input.txt", "r")
 rules = []
 rule_pattern = "^(.*) bags contain (.*)\."
 bag_pattern = "(\d+) (.*) bag"

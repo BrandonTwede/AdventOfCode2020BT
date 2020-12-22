@@ -1,6 +1,6 @@
 import copy
 
-f = open("day_11_input.txt", "r")
+f = open("2020/day_11_input.txt", "r")
 starting_board = []
 for line in f:
     starting_board.append(list(line.strip()))

@@ -1,6 +1,6 @@
 import copy
 
-f = open("day_14_input.txt", "r")
+f = open("2020/day_14_input.txt", "r")
 sections = []
 prev_section = {}
 for line in f:

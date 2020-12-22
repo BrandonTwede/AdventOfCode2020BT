@@ -1,7 +1,7 @@
 import copy
 
-f = open("day_08_input.txt", "r")
-#f = open("day_08_test.txt", "r")
+f = open("2020/day_08_input.txt", "r")
+#f = open("2020/day_08_test.txt", "r")
 
 instructions_base = []
 for line in f:

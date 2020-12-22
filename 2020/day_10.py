@@ -1,9 +1,9 @@
 import copy
 
-f = open("day_10_input.txt", "r")
-# f = open("day_10_test_1.txt", "r")
-# f = open("day_10_test_2.txt", "r")
-# f = open("day_10_test_3.txt", "r")
+f = open("2020/day_10_input.txt", "r")
+# f = open("2020/day_10_test_1.txt", "r")
+# f = open("2020/day_10_test_2.txt", "r")
+# f = open("2020/day_10_test_3.txt", "r")
 numbers = [0]
 for line in f:
     numbers.append(int(line))

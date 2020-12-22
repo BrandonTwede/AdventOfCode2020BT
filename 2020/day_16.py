@@ -1,6 +1,6 @@
 import copy
 
-f = open("day_16_input.txt", "r")
+f = open("2020/day_16_input.txt", "r")
 full_text = f.read()
 f.close()
 

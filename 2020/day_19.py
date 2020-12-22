@@ -1,7 +1,7 @@
 import copy
 import re
 
-f = open("day_19_input.txt", "r")
+f = open("2020/day_19_input.txt", "r")
 full_text = f.read()
 f.close()
 

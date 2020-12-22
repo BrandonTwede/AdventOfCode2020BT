@@ -1,4 +1,4 @@
-f = open("day_21_input.txt", "r")
+f = open("2020/day_21_input.txt", "r")
 
 foods = []
 allergens = set()

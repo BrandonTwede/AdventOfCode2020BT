@@ -2,7 +2,7 @@ import copy
 import math
 import re
 
-f = open("day_20_input.txt", "r")
+f = open("2020/day_20_input.txt", "r")
 full_text = f.read()
 f.close()
 

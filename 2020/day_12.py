@@ -1,4 +1,4 @@
-f = open("day_12_input.txt", "r")
+f = open("2020/day_12_input.txt", "r")
 instructions = []
 for line in f:
     instructions.append([line[0], int(line[1:])])

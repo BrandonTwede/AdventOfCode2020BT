@@ -1,7 +1,7 @@
 import sys
 import copy
 
-f = open("day_13_input.txt", "r")
+f = open("2020/day_13_input.txt", "r")
 my_time = int(f.readline())
 bus_times = f.readline().strip().split(",")
 f.close()

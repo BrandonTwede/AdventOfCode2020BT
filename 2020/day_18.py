@@ -1,6 +1,6 @@
 import copy
 
-f = open("day_18_input.txt", "r")
+f = open("2020/day_18_input.txt", "r")
 
 equations = []
 for line in f:
