@@ -10,8 +10,7 @@ Int64 getFishPopulationCount(int days, Dictionary<int, Int64> fishCounts) {
     for (int day = 0; day < days; day++)
     {
         Dictionary<int, Int64> nextFish = getBlankFishCounts();
-        for (int i = 0; i < 8; i++)
-            nextFish[i] = fishCounts[i + 1];
+        for (int i = 0; i < 8; i++) nextFish[i] = fishCounts[i + 1];
         nextFish[6] = nextFish[6] + fishCounts[0];
         nextFish[8] = fishCounts[0];
         fishCounts = nextFish;
@@ -19,14 +18,12 @@ Int64 getFishPopulationCount(int days, Dictionary<int, Int64> fishCounts) {
     return fishCounts.Values.Sum();
 }
 
-Dictionary<int, Int64> getBlankFishCounts() // For conventience
+Dictionary<int, Int64> getBlankFishCounts() // For convenience
 {
     Dictionary<int, Int64> fishCounts = new Dictionary<int, Int64>();
-    for (int i = 0; i <= 8; i++)
-        fishCounts.Add(i, 0);
+    for (int i = 0; i <= 8; i++) fishCounts.Add(i, 0);
     return fishCounts;
 }
-
 
 Console.WriteLine($"Part 1: {getFishPopulationCount(80, fishCounts)}");
 Console.WriteLine($"Part 2: {getFishPopulationCount(256, fishCounts)}");
