@@ -6,7 +6,7 @@ bool isFirstLoop = true;
 foreach (string[] instruction in instructions)
 {
     string foldAxis = instruction[0];
-    int foldCoordinateIdx = instruction[0] == "x" ? 0 : 1;
+    int foldCoordinateIdx = foldAxis == "x" ? 0 : 1;
     int foldPoint = Int32.Parse(instruction[1]);
     for (int i = 0; i < coordinates.Count; i++)
     {
