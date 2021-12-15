@@ -40,15 +40,12 @@ Console.WriteLine($"Part 2: {getLowestRisk2(part2Floor, part2MaxCost)}");
 
 int getLowestRisk2(int[,] floor, int[,] maxCost)
 {
-    List<Tuple<int, int>> next = new List<Tuple<int, int>>();
+    PriorityQueue<Tuple<int, int>, int> next = new PriorityQueue<Tuple<int, int>, int>();
     HashSet<string> visited = new HashSet<string>();
-    next.Add(new Tuple<int, int>(0, 0));
+    next.Enqueue(new Tuple<int, int>(0, 0), 1);
     while (next.Count > 0)
     {
-        List<Tuple<int, int>> nextNext = new List<Tuple<int, int>>();
-        next = next.OrderBy(n => maxCost[n.Item1, n.Item2]).ToList();
-        Tuple<int, int> current = next.First();
-        next.RemoveAt(0);
+        Tuple<int, int> current = next.Dequeue();
 
         int x = current.Item1;
         int y = current.Item2;
@@ -57,22 +54,22 @@ int getLowestRisk2(int[,] floor, int[,] maxCost)
         if (x + 1 < floor.GetLength(0))
         {
             maxCost[x + 1, y] = Math.Min(maxCost[x+1,y], (x == 0 && y == 0 ? 0 : floor[x, y]) + (maxCost[x, y] == Int32.MaxValue ? 0 : maxCost[x,y]));
-            next.Add(new Tuple<int, int>(x + 1, y));
+            next.Enqueue(new Tuple<int, int>(x + 1, y), maxCost[x+1, y]);
         }
         if (y + 1 < floor.GetLength(1))
         {
             maxCost[x, y + 1] = Math.Min(maxCost[x,y+1], (x == 0 && y == 0 ? 0 : floor[x, y]) + (maxCost[x, y] == Int32.MaxValue ? 0 : maxCost[x,y]));
-            next.Add(new Tuple<int, int>(x, y + 1));
+            next.Enqueue(new Tuple<int, int>(x, y + 1), maxCost[x, y+1]);
         }
         if (x - 1 >= 0)
         {
             maxCost[x -1, y] = Math.Min(maxCost[x-1,y], (x == 0 && y == 0 ? 0 : floor[x, y]) + (maxCost[x, y] == Int32.MaxValue ? 0 : maxCost[x,y]));
-            next.Add(new Tuple<int, int>(x - 1, y));
+            next.Enqueue(new Tuple<int, int>(x - 1, y), maxCost[x-1,y]);
         }
         if (y - 1 >= 0)
         {
             maxCost[x, y - 1] = Math.Min(maxCost[x,y-1], (x == 0 && y == 0 ? 0 : floor[x, y]) + (maxCost[x, y] == Int32.MaxValue ? 0 : maxCost[x,y]));
-            next.Add(new Tuple<int, int>(x, y - 1));
+            next.Enqueue(new Tuple<int, int>(x, y - 1), maxCost[x,y-1]);
         }
     }
     return maxCost[maxCost.GetLength(0) - 1, maxCost.GetLength(1) - 1] + floor[floor.GetLength(0) - 1, floor.GetLength(1) - 1];
