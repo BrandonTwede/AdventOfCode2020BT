@@ -48,6 +48,13 @@ class Directory {
     }
 }
 
+function getRoot(currDir) {
+    while(currDir.parent) {
+        currDir = currDir.parent;
+    }
+    return currDir;
+}
+
 function createDirectoryStructure(input) {
     let currDir = new Directory('/');
     const rows = input.split("\n");
@@ -57,7 +64,16 @@ function createDirectoryStructure(input) {
             switch (row.split(" ")[1]) {
                 case 'cd':
                     let dest = row.split(" ")[2];
-                    currDir = dest == '..' ? currDir.parent : currDir.dirs[dest];
+                    switch(dest) {
+                        case '..':
+                            currDir = currDir.parent;
+                            break;
+                        case '/':
+                            currDir = getRoot(currDir);
+                            break;
+                        default:
+                            currDir = currDir.dirs[dest];
+                    }
                     break;
                 case 'ls':
                     row = rows[i + 1];
@@ -71,11 +87,7 @@ function createDirectoryStructure(input) {
         }
     }
 
-    // Return to root node
-    while(currDir.parent) {
-        currDir = currDir.parent;
-    }
-    return currDir;
+    return getRoot(currDir);
 }
 
 
