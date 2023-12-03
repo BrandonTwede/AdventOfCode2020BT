@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-US"> 
+  <head> 
+    <title>Image Gallery</title> 
+    <style>
+      .rotated {
+        transform: rotate(180deg); /* Equal to rotateZ(45deg) */
+      }
+    </style>
+  </head> 
+  <body> 
+    <h1>Sample Game Board</h1>
+    <p>Clicks: <span id="click-count">0</span></p>
+    <div id="game-board" style="display:flexbox;width:750px"></div>
+
+    <br></br>
+    <br></br>
+    <hr></hr>
+
+
+    <h1>Sample Player Board</h1>
+    <div id="player-board" style="display:flexbox;width:720px"></div>
+    <br></br>
+    <hr></hr>
+    <h1>Game Tiles</h1>
+    <div id="image-gallery" style="display:flexbox">
+
+    </div>
+  </body>
+  <footer>
+    <script>
+        const MAX = 29;
+        function getRandomInt(max) {
+          return Math.floor(Math.random() * max);
+        }
+        function loadImage(target, src, rotate = false) {
+          var imageThumbs = document.getElementById(target);
+          let imgObj = document.createElement('img');
+          imgObj.src = src;
+          if (rotate > 1) {
+            imgObj.style.rotate = rotate + 'deg';
+          } else if (rotate) {
+            imgObj.className = 'rotated';
+          }
+          imgObj.addEventListener("click", (e) => {
+            e.target.style.rotate = Number(e.target.style.rotate.replace(/\D/g,'')) + 90 + 'deg';
+            let clickCount = document.getElementById('click-count');
+            clickCount.innerHTML = Number(clickCount.innerHTML) + 1;
+          })
+          imageThumbs.appendChild(imgObj);
+        }
+        
+        let usedNumbers = [];
+        while(usedNumbers.length < 9) {
+          let random = getRandomInt(MAX);
+          if (!usedNumbers.includes(random)) {
+            const coinFlip = getRandomInt(2);
+            let src = `images/test${random}.svg`;
+            loadImage("player-board", src, coinFlip);
+            usedNumbers.push(random);
+          }
+        }
+        
+        for (var i = 0; i < MAX; i++) {
+          let src = `images/test${i}.svg`;
+          loadImage("image-gallery", src);
+        }
+
+        const MAX_PIECES = 49;
+        for (pieceCount = 0; pieceCount < MAX_PIECES; pieceCount++) {
+
+          let degree = getRandomInt(4) * 90;
+          let isMiddle = true;
+
+          // if (pieceCount % 7 == 0) {
+          //   degree = 90;
+          //   isMiddle = false;
+          // }
+          // if (pieceCount % 7 == 6) {
+          //   degree = 270;
+          //   isMiddle = false;
+          // }
+          // if (pieceCount <= 6) {
+          //   degree = 180;
+          //   isMiddle = false;
+          // }
+          // if (pieceCount >= 42) {
+          //   degree = 0;
+          //   isMiddle = false;
+          // }
+          
+          //Old way
+          // const coinFlip = getRandomInt(100);
+          // loadImage("game-board", coinFlip > 85 ? `images/tBlock.svg` : 'images/lBlock.svg', degree)
+
+          switch(getRandomInt(4)) {
+            case 0:
+              loadImage('game-board', 'images/tBlock.svg', degree);
+              break;
+            case 1:
+            loadImage('game-board', 'images/lBlock.svg', degree);
+              break;
+            case 2:
+              loadImage('game-board', 'images/lineBlock.svg', degree);  
+              break;
+            case 3:
+              loadImage('game-board', 'images/lBlock.svg', degree);
+              break;
+          }
+        }
+        
+
+        
+    </script>
+  </footer>
+</html>
