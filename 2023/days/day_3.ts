@@ -4,7 +4,7 @@ import { InputReader } from "../util/InputReader";
 import { InputReaderSplit } from "../util/InputReaderSplit";
 import DayBase from "./DayBase";
 
-export default class Day2 extends DayBase {
+export default class Day3 extends DayBase {
     
     combineSets(set : Array<number>, ...iterables) {
         for (const iterable of iterables) {

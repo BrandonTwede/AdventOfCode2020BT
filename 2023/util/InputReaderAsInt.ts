@@ -12,7 +12,15 @@ export class InputReaderAsInt extends InputReaderDecoratorInterface {
             
             let innerResult = [];
             for (let y of x) {
-                innerResult.push(Number(y));
+                if (!Array.isArray(y)) {
+                    innerResult.push(Number(y));
+                    continue;
+                }
+                let inner2Result = [];
+                for (let z of y) {
+                    inner2Result.push(Number(z));
+                }
+                innerResult.push(inner2Result);
             }
             result.push(innerResult);
         }

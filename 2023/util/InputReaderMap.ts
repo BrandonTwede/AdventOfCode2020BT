@@ -14,7 +14,7 @@ export class InputReaderMap extends InputReaderDecoratorInterface {
     public async read(): Promise<any> {
         let input = await super.read();
         if (!Array.isArray(input)) {
-            throw Error("Cannot call map function on non array");
+            return this.mapFunc(input);
         }
         let result = [];
         for(let x of input) {

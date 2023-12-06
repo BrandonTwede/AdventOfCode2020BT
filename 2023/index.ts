@@ -16,10 +16,11 @@ async function loadDay(dayOfMonth: number): Promise<DayInterface> {
         let client = useLocal ? null : new AocClient({year: 2023, day:dayOfMonth, token:process.env.AOC_TOKEN});
 
         let result = await day.run(part, await day.getInputReader(client, part, useLocal).read());
-        console.log(result);
         if(result && !useLocal) {
             console.log(`Submitting result for part ${part}: ${result}`);
-            console.log(await client.submit(part, result));
+            console.log("Submit status: ", await client.submit(part, result));
+        } else {
+            console.log(`Result for part ${part}:`, result);
         }
 
         
