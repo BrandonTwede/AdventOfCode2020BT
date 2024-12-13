@@ -12,6 +12,6 @@
     "advent-of-code-client": "^0.2.0"
   },
   "devDependencies": {
-    "@types/node": "^20.9.0"
+    "@types/node": "^20.17.9"
   }
 }
